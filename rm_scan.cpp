@@ -1,10 +1,11 @@
+// æœªä½¿ç”¨
 #include "rm.h"
 #include <cstring>
 #include <iostream>
 using namespace std;
 
 // ==============================
-// RM_Scan ÊµÏÖ
+// RM_Scan å®ç°
 // ==============================
 
 RM_Scan::RM_Scan()
@@ -17,7 +18,7 @@ RM_Scan::~RM_Scan() {
 }
 
 // -----------------------------------------------------
-// Æô¶¯É¨Ãè£ºÉèÖÃÌõ¼ş²¢¶¨Î»µ½µÚÒ»Ò³
+// å¯åŠ¨æ‰«æï¼šè®¾ç½®æ¡ä»¶å¹¶å®šä½åˆ°ç¬¬ä¸€é¡µ
 // -----------------------------------------------------
 RC RM_Scan::OpenScan(RM_FileHandle& fileHandle,
     AttrType attrType, int attrLength,
@@ -31,14 +32,14 @@ RC RM_Scan::OpenScan(RM_FileHandle& fileHandle,
     this->compOp = compOp;
     this->value = value;
 
-    currPage = 1;   // ´ÓµÚ1Ò³¿ªÊ¼É¨Ãè£¨µÚ0Ò³ÊÇÎÄ¼şÍ·£©
+    currPage = 1;   // ä»ç¬¬1é¡µå¼€å§‹æ‰«æï¼ˆç¬¬0é¡µæ˜¯æ–‡ä»¶å¤´ï¼‰
     currSlot = -1;
     bOpen = true;
     return 0;
 }
 
 // -----------------------------------------------------
-// »ñÈ¡ÏÂÒ»ÌõÂú×ãÌõ¼şµÄ¼ÇÂ¼
+// è·å–ä¸‹ä¸€æ¡æ»¡è¶³æ¡ä»¶çš„è®°å½•
 // -----------------------------------------------------
 RC RM_Scan::GetNextRec(RM_Record& rec) {
     if (!bOpen) return -1;
@@ -47,7 +48,7 @@ RC RM_Scan::GetNextRec(RM_Record& rec) {
     char* pageData = nullptr;
     RC rc;
 
-    // ±éÀúÒ³Ãæ
+    // éå†é¡µé¢
     while (currPage < fileHandle->hdr.numPages) {
         rc = fileHandle->pfFileHandle.GetThisPage(currPage, pageHandle);
         if (rc) {
@@ -58,13 +59,13 @@ RC RM_Scan::GetNextRec(RM_Record& rec) {
         pageHandle.GetData(pageData);
         RM_PageHdr* pageHdr = (RM_PageHdr*)pageData;
 
-        // ±éÀúµ±Ç°Ò³²Û
+        // éå†å½“å‰é¡µæ§½
         for (++currSlot; currSlot < pageHdr->recordCount; currSlot++) {
             RM_SlotEntry* slot = (RM_SlotEntry*)(pageData + sizeof(RM_PageHdr)
                 + currSlot * sizeof(RM_SlotEntry));
-            if (!(slot->flags & 1)) continue; // ÒÑÉ¾³ı
+            if (!(slot->flags & 1)) continue; // å·²åˆ é™¤
 
-            // »ñÈ¡¼ÇÂ¼ÄÚÈİ
+            // è·å–è®°å½•å†…å®¹
             char* recordPtr = pageData + slot->offset;
             if (SatisfyCondition(recordPtr)) {
                 RID rid(currPage, currSlot);
@@ -74,7 +75,7 @@ RC RM_Scan::GetNextRec(RM_Record& rec) {
             }
         }
 
-        // µ±Ç°Ò³½áÊø£¬Ìøµ½ÏÂÒ»Ò³
+        // å½“å‰é¡µç»“æŸï¼Œè·³åˆ°ä¸‹ä¸€é¡µ
         fileHandle->pfFileHandle.UnpinPage(currPage);
         currPage++;
         currSlot = -1;
@@ -84,10 +85,10 @@ RC RM_Scan::GetNextRec(RM_Record& rec) {
 }
 
 // -----------------------------------------------------
-// ÅĞ¶Ï¼ÇÂ¼ÊÇ·ñÂú×ã²éÑ¯Ìõ¼ş
+// åˆ¤æ–­è®°å½•æ˜¯å¦æ»¡è¶³æŸ¥è¯¢æ¡ä»¶
 // -----------------------------------------------------
 bool RM_Scan::SatisfyCondition(const char* recordData) const {
-    if (compOp == NO_OP) return true; // ÎŞÌõ¼şÉ¨Ãè
+    if (compOp == NO_OP) return true; // æ— æ¡ä»¶æ‰«æ
 
     const char* attrData = recordData + attrOffset;
 
@@ -111,7 +112,7 @@ bool RM_Scan::SatisfyCondition(const char* recordData) const {
 }
 
 // -----------------------------------------------------
-// ²»Í¬ÀàĞÍµÄ±È½ÏÂß¼­
+// ä¸åŒç±»å‹çš„æ¯”è¾ƒé€»è¾‘
 // -----------------------------------------------------
 template<typename T>
 bool RM_Scan::Compare(T lhs, T rhs) const {
@@ -140,7 +141,7 @@ bool RM_Scan::CompareStr(const char* lhs, const char* rhs) const {
 }
 
 // -----------------------------------------------------
-// ¹Ø±ÕÉ¨Ãè
+// å…³é—­æ‰«æ
 // -----------------------------------------------------
 RC RM_Scan::CloseScan() {
     if (!bOpen) return -1;
@@ -150,3 +151,4 @@ RC RM_Scan::CloseScan() {
     currSlot = -1;
     return 0;
 }
+
