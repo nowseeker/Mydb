@@ -1,0 +1,9 @@
+D:\vs111\mydb\mydb.cpp;D:\vs111\mydb\mydb\x64\Debug\mydb.obj
+D:\vs111\mydb\pf_filehandle.cpp;D:\vs111\mydb\mydb\x64\Debug\pf_filehandle.obj
+D:\vs111\mydb\pf_hashtable.cpp;D:\vs111\mydb\mydb\x64\Debug\pf_hashtable.obj
+D:\vs111\mydb\pf_manager.cpp;D:\vs111\mydb\mydb\x64\Debug\pf_manager.obj
+D:\vs111\mydb\pf_pagehandle.cpp;D:\vs111\mydb\mydb\x64\Debug\pf_pagehandle.obj
+D:\vs111\mydb\rm_filehandle.cpp;D:\vs111\mydb\mydb\x64\Debug\rm_filehandle.obj
+D:\vs111\mydb\rm_manager.cpp;D:\vs111\mydb\mydb\x64\Debug\rm_manager.obj
+D:\vs111\mydb\rm_record.cpp;D:\vs111\mydb\mydb\x64\Debug\rm_record.obj
+D:\vs111\mydb\pf_buffermgr.cpp;D:\vs111\mydb\mydb\x64\Debug\pf_buffermgr.obj

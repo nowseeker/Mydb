@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\vs111\\mydb\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{91DE7AAB-B2A4-4CCC-8A85-FAC4428F0C33}|mydb.vcxproj|D:\\vs111\\mydb\\mydb.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{91DE7AAB-B2A4-4CCC-8A85-FAC4428F0C33}|mydb.vcxproj|solutionrelative:mydb.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91DE7AAB-B2A4-4CCC-8A85-FAC4428F0C33}|mydb.vcxproj|D:\\vs111\\mydb\\rm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{91DE7AAB-B2A4-4CCC-8A85-FAC4428F0C33}|mydb.vcxproj|solutionrelative:rm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91DE7AAB-B2A4-4CCC-8A85-FAC4428F0C33}|mydb.vcxproj|D:\\vs111\\mydb\\pf.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{91DE7AAB-B2A4-4CCC-8A85-FAC4428F0C33}|mydb.vcxproj|solutionrelative:pf.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91DE7AAB-B2A4-4CCC-8A85-FAC4428F0C33}|mydb.vcxproj|D:\\vs111\\mydb\\catalog.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{91DE7AAB-B2A4-4CCC-8A85-FAC4428F0C33}|mydb.vcxproj|solutionrelative:catalog.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 219,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "mydb.cpp",
+              "DocumentMoniker": "D:\\vs111\\mydb\\mydb.cpp",
+              "RelativeDocumentMoniker": "mydb.cpp",
+              "ToolTip": "D:\\vs111\\mydb\\mydb.cpp",
+              "RelativeToolTip": "mydb.cpp",
+              "ViewState": "AgIAADwAAAAAAAAAAAAQwEcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-27T03:22:13.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "rm.h",
+              "DocumentMoniker": "D:\\vs111\\mydb\\rm.h",
+              "RelativeDocumentMoniker": "rm.h",
+              "ToolTip": "D:\\vs111\\mydb\\rm.h",
+              "RelativeToolTip": "rm.h",
+              "ViewState": "AgIAAHIAAAAAAAAAAADwv3oAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-23T14:55:26.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "pf.h",
+              "DocumentMoniker": "D:\\vs111\\mydb\\pf.h",
+              "RelativeDocumentMoniker": "pf.h",
+              "ToolTip": "D:\\vs111\\mydb\\pf.h",
+              "RelativeToolTip": "pf.h",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAcwHsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-23T14:55:56.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "catalog.h",
+              "DocumentMoniker": "D:\\vs111\\mydb\\catalog.h",
+              "RelativeDocumentMoniker": "catalog.h",
+              "ToolTip": "D:\\vs111\\mydb\\catalog.h",
+              "RelativeToolTip": "catalog.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-18T14:58:32.508Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
