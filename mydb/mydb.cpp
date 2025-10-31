@@ -54,6 +54,37 @@ void LoadCatalog(RelCatEntry& relEntry, vector<AttrCatEntry>& attrs, const strin
     attrFile.close();
 }
 
+void UpdateCatalogRecordCount(const string& tableName, int newCount) {
+    fstream relFile("relcat.tbl", ios::in | ios::out | ios::binary);
+    if (!relFile.is_open()) {
+        // cerr << "无法打开 relcat.tbl " << endl;
+        return;
+    }
+
+    RelCatEntry rel;
+    streampos pos;
+    bool updated = false;
+    while (true) {
+        pos = relFile.tellg();
+        if (!relFile.read((char*)&rel, sizeof(RelCatEntry)))
+            break;
+
+        if (strcmp(rel.relName, tableName.c_str()) == 0) {
+            rel.recordCount = newCount;
+            relFile.seekp(pos);
+            relFile.write((char*)&rel, sizeof(RelCatEntry));
+            updated = true;
+            break;
+        }
+    }
+    relFile.close();
+
+    //if (updated)
+    //    cout << "已更新表 " << tableName << " 的记录数为 " << newCount << "。\n";
+    //else
+    //    cout << "未找到表 " << tableName << " 的记录信息，无法更新。\n";
+}
+
 // ====================== 打印数据字典内容 ======================
 void PrintCatalog() {
     ifstream relFile("relcat.tbl", ios::binary);
@@ -220,7 +251,12 @@ int main() {
 
     int choice;
     while (true) {
-        cout << "\n>>> 请输入操作编号 (13 查看帮助): ";
+        if (g_hasOpenTable) {
+            cout<<"当前对"<< g_currentTableName << "表操作"<< ">>> 请输入操作编号 (13 查看帮助): ";
+        }
+        else {
+            cout << "\n>>> 请输入操作编号 (13 查看帮助): ";
+        }
         cin >> choice;
 
         if (choice == 0) {
@@ -387,6 +423,8 @@ int main() {
 
             cout << "\n=== 输出完成，共 " << pageCount + 1
                 << " 页，" << recordCount << " 条记录 ===\n";
+
+            UpdateCatalogRecordCount(g_currentTableName, recordCount);
         }
 
         else if (choice == 11) {
@@ -437,6 +475,21 @@ int main() {
 
         else if (choice == 13) {
             PrintMenu();
+        }
+
+        else if (choice == 14) { // 重组表文件
+            if (!g_hasOpenTable) {
+                cout << "请先打开表再重组。\n";
+                break;
+            }
+            cout << "开始重组紧凑表 [" << g_currentTableName << "]...\n";
+            RC rc = g_openFile.CompactFile();
+            if (rc != 0) {
+                cout << "紧凑表失败，错误码: " << rc << endl;
+            }
+            else {
+                cout << "紧凑表完成。已删除记录已移除，页面已重组。\n";
+            }
         }
 
         else {

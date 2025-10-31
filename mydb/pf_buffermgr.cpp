@@ -193,7 +193,7 @@ RC PF_BufferMgr::PrintBuffer()
         next = bufTable[slot].next;
         cout << slot << ": fd=" << bufTable[slot].fd
             << " pageNum=" << bufTable[slot].pageNum
-            << " dirty=" << bufTable[slot].bDirty
+            << " dirty=" << bufTable[slot].bDirty//<<"\n";
             << " pin=" << bufTable[slot].pinCount << "\n";
         slot = next;
     }
@@ -300,7 +300,7 @@ RC PF_BufferMgr::InternalAlloc(int& slot)
     }
     else {
         for (slot = last; slot != INVALID_SLOT; slot = bufTable[slot].prev)
-            if (bufTable[slot].pinCount == 0) break;
+            if (bufTable[slot].pinCount <= 1) break;// 重大改动，test
         if (slot == INVALID_SLOT) return PF_NOBUF;
         if (bufTable[slot].bDirty) {
             if ((rc = WritePage(bufTable[slot].fd, bufTable[slot].pageNum, bufTable[slot].pData)))
@@ -352,7 +352,7 @@ RC PF_BufferMgr::InitPageDesc(int fd, PageNum pageNum, int slot)
     bufTable[slot].fd = fd;
     bufTable[slot].pageNum = pageNum;
     bufTable[slot].bDirty = FALSE;
-    bufTable[slot].pinCount = 1;
+    bufTable[slot].pinCount = 1;// 原为1
     return 0;
 }
 

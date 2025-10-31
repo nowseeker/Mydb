@@ -107,7 +107,7 @@ RC RM_Manager::OpenFile(const char* fileName, RM_FileHandle& fileHandle) {
     fileHandle.SetPFFileHandle(pfFH);
     fileHandle.SetFileHeader(fh);
 
-    std::cout << "[RM_Manager] OpenFile: 成功打开文件 " << fileName << std::endl;
+    // std::cout << "[RM_Manager] OpenFile: 成功打开文件 " << fileName << std::endl;
     return 0;
 }
 
@@ -139,17 +139,17 @@ RC RM_Manager::CloseFile(RM_FileHandle& fileHandle) {
     // 刷新所有脏页
     rc = fileHandle.ForcePages();
     if (rc != 0)
-        std::cerr << "[RM_Manager] CloseFile: ForcePages 失败 rc=" << rc << std::endl;
+        // std::cerr << "[RM_Manager] CloseFile: ForcePages 失败 rc=" << rc << std::endl;
 
     // 调用 PF 层关闭文件
     rc = pfManager.CloseFile(*pfFH);
     if (rc != 0)
-        std::cerr << "[RM_Manager] CloseFile: PF 层关闭失败 rc=" << rc << std::endl;
+        // std::cerr << "[RM_Manager] CloseFile: PF 层关闭失败 rc=" << rc << std::endl;
 
     // 清理指针
     delete pfFH;
     fileHandle.SetPFFileHandle(nullptr);
 
-    std::cout << "[RM_Manager] CloseFile: 文件关闭完成" << std::endl;
+    // std::cout << "[RM_Manager] CloseFile: 文件关闭完成" << std::endl;
     return 0;
 }

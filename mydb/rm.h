@@ -156,6 +156,8 @@ public:
     PF_FileHandle* GetPFFileHandle() const { return pfFileHandle; }
     bool IsHeaderChanged() const { return headerChanged; }
 
+    RC CompactFile(); // 将表文件按页紧凑（清除已删除记录）
+
 
 private:
     // 内部辅助函数 -----------------------------------------
